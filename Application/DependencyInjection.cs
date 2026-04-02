@@ -15,9 +15,8 @@ namespace Application
             {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
-            var sp = services.BuildServiceProvider();
-            var mediatR = sp.GetService<IMediator>();
-            services.AddSingleton<IPerformanceService>(new PerformanceService(mediatR));
+            
+            services.AddScoped<IPerformanceService, PerformanceService>();
             return services;
         }
     }
